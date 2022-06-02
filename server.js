@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const authRoutes = require('./routes/auth');
+const projectRoutes = require('./routes/project.routes');
+const taskRoutes = require('./routes/task.routes');
 
 const app = express();
 const DB = process.env.DB;
@@ -21,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/auth', authRoutes);
+app.use('/api', projectRoutes);
+app.use('/api', taskRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: "Welcome to Project Manager." });
