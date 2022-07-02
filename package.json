@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./server.js",
     "dev": "nodemon ./server.js --exec babel-node -e js --trace-warnings",
-    "test": "jest --verbose"
+    "test": "jest"
   },
   "license": "ISC",
   "dependencies": {
