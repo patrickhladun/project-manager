@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { validationResult } = require('express-validator/check');
+const { validationResult } = require('express-validator');
 
 const db = require('../models/models');
 const User = db.user;
@@ -23,7 +23,7 @@ exports.addTask = (req, res, next) => {
     });
 
     task.save(task)
-        .then(() => res.send(task._id))
+        .then(() => res.send(task))
         .catch(err => {
             res.status(500).send({ message: err });
             return;
@@ -44,7 +44,7 @@ exports.updateTask = (req, res, next) => {
     Task.findByIdAndUpdate({_id:req.params.id}, task)
         .then(response => res.send(response))
         .catch(error => {
-            res.status(500).send({ message: err });
+            res.status(500).send({ message: error });
             return;
         }
     );
